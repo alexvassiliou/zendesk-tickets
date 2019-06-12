@@ -36,23 +36,26 @@ module ZendeskTicket
       when :find
         id = ask_for('ID').to_i
         ticket = @controller.find_ticket(id)
-
+        return no_connection if @controller.page_count == 0
         return back_to_main if ticket.nil?
 
         display_show(ticket)
       when :goto_page
         id = ask_for('page').to_i
         list = @controller.goto_page(id)
+        return no_connection if @controller.page_count == 0
         return back_to_main if list.nil?
 
         display_index(list)
       when :prev_page
         list = @controller.prev_page
+        return no_connection if @controller.page_count == 0
         return back_to_main if list.nil?
 
         display_index(list)
       when :next_page
         list = @controller.next_page
+        return no_connection if @controller.page_count == 0
         return back_to_main if list.nil?
 
         display_index(list)

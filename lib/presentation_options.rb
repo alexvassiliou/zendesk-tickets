@@ -27,7 +27,7 @@ module ZendeskTicket
       [
         [''],
         ['options:'],
-        ['find | main | exit'],
+        ['list | find | main | exit'],
         ['']
       ]
     end

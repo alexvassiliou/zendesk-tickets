@@ -54,7 +54,9 @@ module ZendeskTicket
     def no_connection
       [
         [''],
-        ['CHECK CLIENT CONNECTION'],
+        ['**** Client connection is down ****'],
+        ['**** Please check your network connection ****'],
+        ['**** And ensure you have the correct access rights ****'],
         ['']
       ]
     end
