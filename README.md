@@ -4,7 +4,14 @@
 This app allows you to view Tickets from the Zendesk API.
 
 ## Installation Instructions
+
 This program was coded and tested in ruby 2.5.3.
+
+Clone the repository into your local machinee
+
+    $ git clone https://github.com/alexvassiliou/zendesk-tickets.git
+    $ cd zendesk-tickets
+
 In the root folder, please run the following commands in your terminal. This will ensure bundler and all the respective gems are installed.
 
     $ gem install bundler
