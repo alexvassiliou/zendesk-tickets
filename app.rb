@@ -9,6 +9,7 @@ module ZendeskTicket
   client = Zendesk.new.config
   controller = TicketsController.new(client: client)
 
+
   router = Router.new(controller)
 
   router.run

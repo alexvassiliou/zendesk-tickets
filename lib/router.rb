@@ -29,12 +29,14 @@ module ZendeskTicket
       case action
       when :list
         list = @controller.list
+        return no_connection if @controller.page_count == 0
         return back_to_main if list.nil?
 
         display_index(list)
       when :find
         id = ask_for('ID').to_i
         ticket = @controller.find_ticket(id)
+
         return back_to_main if ticket.nil?
 
         display_show(ticket)
@@ -71,6 +73,11 @@ module ZendeskTicket
       page
       puts @view.index(list, @current, @total)
       puts @menu.index
+    end
+
+    def no_connection
+      puts @view.no_connection
+      puts @menu.main
     end
 
     def display_show(ticket)

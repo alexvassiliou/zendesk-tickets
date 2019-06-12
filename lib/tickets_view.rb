@@ -51,8 +51,20 @@ module ZendeskTicket
       end
     end
 
+    def no_connection
+      [
+        [''],
+        ['CHECK CLIENT CONNECTION'],
+        ['']
+      ]
+    end
+
     def no_results
-      ['invalid input']
+      [
+        [''],
+        ['NO RESULTS FOUND'],
+        ['']
+      ]
     end
   end
 end
