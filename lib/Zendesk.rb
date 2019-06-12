@@ -1,4 +1,5 @@
 require 'zendesk_api'
+
 module ZendeskTicket
 
   class Zendesk
