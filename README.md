@@ -1,6 +1,6 @@
 # zendesk-tickets
 
-Design Notes
+# Design Notes
 
 1. Have exposed the .env file on this repo to make it easier to pass on the credentials for the purpose of this challenge.  Better practise would be to have the .env generate on execution of a script once repo has been cloned so that user can enter their own credentials into it.  And then include my .env on my .gitignore file to prevent my credentials from being accessed via the github repo.
 
