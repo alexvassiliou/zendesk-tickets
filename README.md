@@ -1,8 +1,27 @@
 # zendesk-tickets
+## overview
 
-# setup
+This app allows you to view Tickets from the Zendesk API.
 
-# design notes
+## Installation Instructions
+This program was coded and tested in ruby 2.5.3.
+In the root folder, please run the following commands in your terminal. This will ensure bundler and all the respective gems are installed.
+
+    $ gem install bundler
+    $ bundle install
+    
+    
+## Running the app
+To run the app
+
+    $ ruby app.rb 
+
+## Test Instructions
+To run tests for the ticket viewer application, please run the following commands:
+
+    $ bundle exec rspec
+    
+## Design Notes
 
 1. Have exposed the .env file on this repo to make it easier to pass on the credentials for the purpose of this challenge.  Better practise would be to have the .env generate on execution of a script once repo has been cloned so that user can enter their own credentials into it.  And then include my .env on my .gitignore file to prevent my credentials from being accessed via the github repo.
 
