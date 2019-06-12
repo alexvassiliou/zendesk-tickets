@@ -1,29 +1,28 @@
 require_relative 'spec_helper'
 require_relative '../lib/tickets_view'
 require 'terminal-table'
-  obj1 = {
-            url: 'www.one.com',
-            id: 11,
-            status: 'open',
-            created_at: '2019',
-            submitter_id: 12,
-            assignee_id: 13,
-            subject: 'test sub 1',
-            tag: 'test tag 1',
-            description: 'test description 1'
-          }
-  obj2 = {
-            url: 'www.two.com',
-            id: 21,
-            status: 'open',
-            created_at: '2013',
-            submitter_id: 22,
-            assignee_id: 23,
-            subject: 'test sub 2',
-            tag: 'test tag 3',
-            description: 'test description 2'
-          }
-
+obj1 = {
+          url: 'www.one.com',
+          id: 11,
+          status: 'open',
+          created_at: '2019',
+          submitter_id: 12,
+          assignee_id: 13,
+          subject: 'test sub 1',
+          tag: 'test tag 1',
+          description: 'test description 1'
+        }
+obj2 = {
+          url: 'www.two.com',
+          id: 21,
+          status: 'open',
+          created_at: '2013',
+          submitter_id: 22,
+          assignee_id: 23,
+          subject: 'test sub 2',
+          tag: 'test tag 3',
+          description: 'test description 2'
+        }
 
 describe TicketsView do
   before :all do

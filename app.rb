@@ -4,10 +4,12 @@ require_relative 'lib/router'
 require 'terminal-table'
 require 'dotenv/load'
 require 'rspec'
+module ZendeskTicket
 
-client = Zendesk.new.config
-controller = TicketsController.new(client: client, per_page: 10)
+  client = Zendesk.new.config
+  controller = TicketsController.new(client: client)
 
-router = Router.new(controller)
+  router = Router.new(controller)
 
-router.run
+  router.run
+end
