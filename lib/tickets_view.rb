@@ -1,8 +1,9 @@
 require 'terminal-table'
 
 module ZendeskTicket
-  # presentation logic for tickets
+  # presentation logic for tickets, takes any hash input.
   class TicketsView
+    # could use inheritance here for future views, ie base view - users view etc
     def index(objects, current_page, total_pages)
       rows = []
       if !objects.nil? && total_pages >= current_page
@@ -13,8 +14,7 @@ module ZendeskTicket
                     object[:tags],
                     object[:assignee_id],
                     object[:submitter_id],
-                    object[:updated_at],
-                    ]
+                    object[:updated_at]]
         end
         Terminal::Table.new title: "TICKETS LIST: p. #{current_page} / #{total_pages}",
                             headings: [ 'ID',
@@ -46,7 +46,8 @@ module ZendeskTicket
           ["tags:           #{object[:tags]}"],
           ["subject:        #{object[:subject]}"],
           ['description:'],
-          [object[:description].to_s]
+          [object[:description].to_s],
+          ['------------------------------------------------']
         ]
       end
     end

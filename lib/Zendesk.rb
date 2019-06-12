@@ -1,7 +1,6 @@
 require 'zendesk_api'
 
 module ZendeskTicket
-
   class Zendesk
     def config
       ZendeskAPI::Client.new do |config|

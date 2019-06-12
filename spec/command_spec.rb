@@ -1,7 +1,6 @@
 require_relative 'spec_helper'
 require_relative '../lib/command'
 module ZendeskTicket
-
   describe 'Command' do
     it 'should return next page' do
       expect(Command.process('NEXT')).to eq(:next_page)

@@ -12,25 +12,24 @@ module ZendeskTicket
     end
 
     def next_page
-      return nil if @list.nil?
       return goto_page(@list.next) if current_page < page_count
     end
 
     def prev_page
-      return nil if @list.nil?
       return goto_page(@list.prev) if current_page > 1
     end
 
     def find_ticket(id)
-      return nil if @list.nil?
       ticket = @client.tickets.find(id: id)
       return nil if ticket.nil?
+
       ticket
     end
 
     def goto_page(num)
       return nil if num > page_count
       return nil if @list.nil?
+
       @list = @client.tickets.page(num)
     end
 
@@ -46,7 +45,7 @@ module ZendeskTicket
     private
 
     def request_tickets
-      list = @client.tickets.page(1).per_page(@per_page)
+      @client.tickets.page(1).per_page(@per_page)
     end
   end
 end

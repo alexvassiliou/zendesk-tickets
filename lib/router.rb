@@ -1,9 +1,10 @@
 require_relative 'tickets_view'
 require_relative 'presentation_options'
 require_relative 'command'
-
 module ZendeskTicket
-  #this class provides all the routes for the app
+# this class provides all the routes for the user actions and displays them
+# this needs to be refactored to decouple it from external classes,
+# so that I could easily perform isolation tests on the.
   class Router
     def initialize(controller)
       @controller = controller
@@ -29,7 +30,7 @@ module ZendeskTicket
       case action
       when :list
         list = @controller.list
-        return no_connection if @controller.page_count == 0
+        return no_connection if @controller.page_count.zero?
         return back_to_main if list.nil?
 
         display_index(list)
@@ -73,7 +74,7 @@ module ZendeskTicket
 
     def display_index(list)
       clear
-      page
+      page_num_refresh
       puts @view.index(list, @current, @total)
       puts @menu.index
     end
@@ -105,7 +106,7 @@ module ZendeskTicket
       puts @menu.main
     end
 
-    def page
+    def page_num_refresh
       @current = @controller.current_page
       @total = @controller.page_count
     end
@@ -119,7 +120,7 @@ module ZendeskTicket
     end
 
     def clear
-      system "clear" or system "cls"
+      system 'clear' or system 'cls'
     end
   end
 end

@@ -16,32 +16,37 @@ In the root folder, please run the following commands in your terminal. This wil
 
     $ gem install bundler
     $ bundle install
-    
-    
+
+
 ## Running the app
 To run the app
 
-    $ ruby app.rb 
+    $ rake run
 
 ## Test Instructions
 To run tests for the ticket viewer application, please run the following commands:
 
-    $ bundle exec rspec
-    
+    $ rake spec
+
+
 ## Design Notes
 
-1. Have exposed the .env file on this repo to make it easier to pass on the credentials for the purpose of this challenge.  Better practise would be to have the .env generate on execution of a script once repo has been cloned so that user can enter their own credentials into it.  And then include my .env on my .gitignore file to prevent my credentials from being accessed via the github repo.
 
-2. Extending above, I could also create a user model that takes the zendesk authentication to pass onto the client.  I decided not to build this feature, but would be easily achievable.
+1. Opted to use the zendesk api gem as it already has validations and specs built into into its models, ensuring its reliability.
 
-3. Opted to use the zendesk api gem instead of building my own repository and model as the gem already has validations and specs built into it, ensuring its reliability.
+2. API call caches the page you are on, so if you select list each subsequent time it is in memory so will load the page quicker.  However, any new action will update the cache to ensure that tickets being displayed are always current and theoretically you can page through thousands of tickets or jump to specific pages.
 
-4. API call caches the page you are on, so if you select list each subsequent time it is in memory so will load the page quicker.  However any new action will update the cache to ensure that tickets being displayed are always current and theoretically you can page through thousands of tickets or jump to specific pages.
+3. Obvious limitation of the above is that app will be slower.  Can be mitigated slightly by calling more tickets per page which is an attribute of the TicketsController, is adjusted via app.rb when instantiating the controller however can be refactored to take a user input.
 
-5. Obvious limitation of the above is that app will be slower.  Can be mitigated slightly by calling more tickets per page which is an attribute of the TicketsController, wadjusted via the code atm but could easily include it as a user input.
+4. Have exposed the .env file on this repo to make it easier to pass on the credentials so there arent any hiccups during the review.  Better practise would be to have the .env generate on execution of a script via a rake setup shell command so that user can enter their own credentials into it.
 
-6. Initially intended to decouple my Router class by using Command class to map to controller and view functions to user input.  However, due to time constraints I was unable to complete this, so the Command class currently just parsed the user input into a symbol for later refactoring.
+5. Extending above, I could also create a user model that takes the zendesk authentication from user input or settings and then passes it to the api client to use for instantiating an api client.  However as this app is only being used with one account it was not nessessary.
 
-7. Testing the controller didnt have the time to create mocks so unfortunately it calls the API a few times.  However because they are only returning a limited amount of results per page it shouldnt be too bad, just means that the API client connection has to work for the TicketsController tests to pass.
+6. Initially intended to decouple my Router class by using Command class to map user input to controller and view functions.  However, due to time constraints I was unable to complete this, so the Command class currently just parsed the user input into a symbol.
 
-8. Following on from that I need to perform some integration tests on the router class to check that the no connection message is accurate as well as the routes in general.
+7. Ran out of time to write some unit or intergration tests for the router, would have leaned toward the latter given the tightly coupled nature of the router.
+
+8. Testing the controller didnt have the time to create mocks so unfortunately it calls the API a few times.  However because they are only returning a limited amount of results per page it shouldnt be too bad, just means that the API client connection has to work for the TicketsController tests to pass.
+
+9. The find/search for ticket function calls the API and hence can be enabled to use any of the search field parameters easily, I limited it to ID only to demonstrate the feature for this app.  But in future I could build in a search by user feature too by using the api to call all the relevant information similar to the tickets, so that we could search by name etc.
+

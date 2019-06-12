@@ -1,5 +1,4 @@
 module ZendeskTicket
-
 #this is the diplay for all the different menu options
   class PresentationOptions
     def main

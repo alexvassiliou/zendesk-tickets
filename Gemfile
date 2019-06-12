@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'dotenv'
-gem 'zendesk_api'
-gem 'rake', '~> 11.2', '>= 11.2.2'
-gem 'terminal-table'
 gem 'byebug'
+gem 'dotenv'
+gem 'rake', '~> 11.2', '>= 11.2.2'
 gem 'rspec'
+gem 'terminal-table'
+gem 'zendesk_api'
