@@ -38,7 +38,7 @@ module ZendeskTicket
       expect(index).to be_a(Terminal::Table)
     end
 
-    it 'index should return nil passed nil' do
+    it 'index should return nil when passed nil' do
       index = @view.index(nil, 1, 2)
       expect(index).to eq(nil)
     end
@@ -48,11 +48,18 @@ module ZendeskTicket
       expect(index).to eq(nil)
     end
 
+    it 'index should return a table if passed an empty object' do
+      expect(@view.index({},1,2)).to be_a Terminal::Table
+    end
+    it 'show should return nil if passed an empty object' do
+      expect(@view.show({})).to eq(nil)
+    end
+
     it 'show should return an array' do
       expect(@view.show(@ticket)).to be_a Array
     end
 
-    it 'show should return an nil if passed an empty object' do
+    it 'show should return nil if passed an empty object' do
       expect(@view.show({})).to eq(nil)
     end
   end
