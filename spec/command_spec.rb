@@ -35,6 +35,10 @@ describe 'Command' do
   it 'should return exit' do
     expect(Command.process('  ExIt  ')).to eq(:exit)
     expect(Command.process('exit ')).to eq(:exit)
+    expect(Command.process('  QuIt  ')).to eq(:exit)
+    expect(Command.process('q ')).to eq(:exit)
+    expect(Command.process('  ExIt  ')).to eq(:exit)
+    expect(Command.process('exit ')).to eq(:exit)
   end
 
   it 'should return invalid page if invalid data is entered' do
