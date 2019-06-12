@@ -25,7 +25,7 @@ class PresentationOptions
     [
       [''],
       ['options:'],
-      ['back | find | main | exit'],
+      ['find | main | exit'],
       ['']
     ]
   end

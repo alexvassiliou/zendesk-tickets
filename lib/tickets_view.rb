@@ -16,12 +16,14 @@ class TicketsView
                           headings: ['ID', 'Status', 'Created', 'Updated', 'Submitter', 'Subject'],
                           rows: rows
     else
-      return []
+      return nil
     end
   end
 
   def show(object)
-    if !object.nil?
+    if object.nil? || object.empty?
+      return nil
+    else
       [
         ['TICKET DETAILS'],
         [''],
@@ -36,12 +38,6 @@ class TicketsView
         ['description:'],
         [object[:description].to_s]
       ]
-    else
-      return []
     end
-  end
-
-  def no_results
-    ['NO RESULTS FOUND']
   end
 end

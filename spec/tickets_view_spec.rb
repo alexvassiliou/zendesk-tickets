@@ -37,23 +37,21 @@ describe TicketsView do
     expect(index).to be_a(Terminal::Table)
   end
 
-  it 'index should return an empty array when passed nil' do
+  it 'index should return nil passed nil' do
     index = @view.index(nil, 1, 2)
-    expect(index).to be_a Array
-    expect(index).to be_empty
+    expect(index).to eq(nil)
   end
 
-  it 'index should return an empty array if current page is greater than total' do
+  it 'index should return nil if current page is greater than total' do
     index = @view.index(@ticket, 2, 1)
-    expect(index).to be_a Array
-    expect(index).to be_empty
+    expect(index).to eq(nil)
   end
 
   it 'show should return an array' do
     expect(@view.show(@ticket)).to be_a Array
   end
 
-  it 'show should return an empty array if passed nil' do
-    expect(@view.show(nil)).to be_empty
+  it 'show should return an nil if passed an empty object' do
+    expect(@view.show({})).to eq(nil)
   end
 end
