@@ -22,8 +22,9 @@ module ZendeskTicket
     def find_ticket(id)
       ticket = @client.tickets.find(id: id)
       return nil if ticket.nil?
-
-      ticket
+      user_name = @client.users.find(id: ticket.submitter_id).name
+      ticket.submitter_id = user_name
+      return ticket
     end
 
     def goto_page(num)

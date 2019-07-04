@@ -120,7 +120,7 @@ module ZendeskTicket
     end
 
     def clear
-      system 'clear' or system 'cls'
+      # system 'clear' or system 'cls'
     end
   end
 end
